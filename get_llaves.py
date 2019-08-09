@@ -3,7 +3,7 @@ import json
 import os
 import time
 
-import led
+import led as LED
 
 ##	LEER IP DEL SERVIDOR
 f=open("files/ip_config.txt", "r")
