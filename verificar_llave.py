@@ -1,5 +1,6 @@
 def verificar_llave_localmente(llave):
-    f = open("files/llaves.txt", "r")
+	files_path = os.getcwd() + '/files'
+    f = open(files_path + "/llaves.txt", "r")
     llaves = f.read()
     llaves = json.loads(llaves)
     if llave in llaves:

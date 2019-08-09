@@ -7,7 +7,6 @@ import led as LED
 
 ##	LEER IP DEL SERVIDOR
 files_path = os.getcwd() + '/files'
-print(files_path + "/ip_config.txt")
 f=open(files_path + "/ip_config.txt", "r")
 ip = str(f.read())
 f.close()
@@ -42,7 +41,6 @@ while True:
 
 				## MOSTRAR ESTADO ACTUALIZADO
 				LED.actualizado()
-				print("LLAVES ACTUALIZADAS CON ÉXITO")
 			else:
 				print("ERROR")
 		else:
@@ -52,7 +50,6 @@ while True:
 	except Exception as e:
 		## MANEJO DE ERROR EN LECTURA DE NUMERO DE SERIE
 		print("ERROR EN LECTURA DE NUMERO DE SERIE " + str(e))
-		LED.actualizado()
-	import time
+
 	time.sleep(5)
 	
