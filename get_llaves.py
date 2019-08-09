@@ -3,6 +3,12 @@ import json
 import os
 import time
 
+##	LEER IP DEL SERVIDOR
+f=open("ip_config.txt", "r")
+ip = str(f.read())
+f.close()
+url = ip + '/rest/llave/read_llaves_dispositivo'
+
 while True:
 	try:
 		##	LEER NUMERO DE SERIE DEL DISPOSITIVO
@@ -12,7 +18,7 @@ while True:
 
 		## REALIZAR REQUEST
 		parametros = {"NUMERO_SERIE" : NUMERO_SERIE}
-		r = requests.get('http://127.0.0.1:8000/rest/llave/read_llaves_dispositivo', params=parametros)
+		r = requests.get(url, params=parametros)
 
 		if r.status_code == 200:
 			## VERIFICANDO RESPUESTA DEL SERVIDOR
@@ -40,5 +46,5 @@ while True:
 		## MANEJO DE ERROR EN LECTURA DE NUMERO DE SERIE
 		print("ERROR EN LECTURA DE NUMERO DE SERIE")
 	import time
-	time.sleep(120)
+	time.sleep(5)
 	
