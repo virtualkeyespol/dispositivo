@@ -3,8 +3,10 @@ import json
 import os
 import time
 
+from . import led_control
+
 ##	LEER IP DEL SERVIDOR
-f=open("ip_config.txt", "r")
+f=open("files/ip_config.txt", "r")
 ip = str(f.read())
 f.close()
 url = ip + '/rest/llave/read_llaves_dispositivo'
@@ -12,7 +14,7 @@ url = ip + '/rest/llave/read_llaves_dispositivo'
 while True:
 	try:
 		##	LEER NUMERO DE SERIE DEL DISPOSITIVO
-		f=open("numero_serie.txt", "r")
+		f=open("files/numero_serie.txt", "r")
 		NUMERO_SERIE = int(f.read())
 		f.close()
 
@@ -35,6 +37,9 @@ while True:
 					}
 				f.write(json.dumps(llaves))
 				f.close()
+
+				## MOSTRAR ESTADO ACTUALIZADO
+				led_control.actualizado()
 				print("LLAVES ACTUALIZADAS CON ÉXITO")
 			else:
 				print("ERROR")

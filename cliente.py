@@ -7,7 +7,7 @@ ip = str(f.read())
 f.close()
 url = ip + '/rest/login'
 
-parametros = {'USUARIO':'pdestrad@gmail.com', 'CONTRASENA': 'homoplato1'}
+parametros = {'USUARIO':'pdestrad@gmail.com', 'CONTRASENA': '*************'}
 r = requests.post(url, data=json.dumps(parametros))
 respuesta = json.dumps(r.json())
 print(respuesta)
