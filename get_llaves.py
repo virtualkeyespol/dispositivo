@@ -6,7 +6,8 @@ import time
 import led as LED
 
 ##	LEER IP DEL SERVIDOR
-f=open("./files/ip_config.txt", "r")
+files_path = os.getcwd() + '/files'
+f=open(files_path + "/ip_config.txt", "r")
 ip = str(f.read())
 f.close()
 url = ip + '/rest/llave/read_llaves_dispositivo'
@@ -50,6 +51,7 @@ while True:
 	except:
 		## MANEJO DE ERROR EN LECTURA DE NUMERO DE SERIE
 		print("ERROR EN LECTURA DE NUMERO DE SERIE")
+		LED.actualizado()
 	import time
 	time.sleep(5)
 	
