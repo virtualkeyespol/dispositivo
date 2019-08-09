@@ -3,7 +3,7 @@ import json
 import os
 import time
 
-from . import led_control
+import led
 
 ##	LEER IP DEL SERVIDOR
 f=open("files/ip_config.txt", "r")
@@ -39,7 +39,7 @@ while True:
 				f.close()
 
 				## MOSTRAR ESTADO ACTUALIZADO
-				led_control.actualizado()
+				LED.actualizado()
 				print("LLAVES ACTUALIZADAS CON ÉXITO")
 			else:
 				print("ERROR")
