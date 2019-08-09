@@ -49,9 +49,9 @@ while True:
 			## MANEJO DE ERROR DE REQUEST
 			print("ERROR DE REQUEST")
 
-	except:
+	except Exception as e:
 		## MANEJO DE ERROR EN LECTURA DE NUMERO DE SERIE
-		print("ERROR EN LECTURA DE NUMERO DE SERIE")
+		print("ERROR EN LECTURA DE NUMERO DE SERIE " + str(e))
 		LED.actualizado()
 	import time
 	time.sleep(5)
