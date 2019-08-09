@@ -6,7 +6,7 @@ import time
 import led as LED
 
 ##	LEER IP DEL SERVIDOR
-f=open("files/ip_config.txt", "r")
+f=open("./files/ip_config.txt", "r")
 ip = str(f.read())
 f.close()
 url = ip + '/rest/llave/read_llaves_dispositivo'
