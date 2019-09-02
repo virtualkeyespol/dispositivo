@@ -1,6 +1,11 @@
 import bluetooth
 import json
 
+##  LEER IP DEL SERVIDOR
+files_path = os.getcwd() + '/files'
+f=open(files_path + "/ip_config.txt", "r")
+ip = str(f.read())
+f.close()
 url = ip + '/rest/llave/verificar_llave'
 
 def verificar_llave(codigo):
