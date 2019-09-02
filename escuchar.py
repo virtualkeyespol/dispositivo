@@ -1,29 +1,22 @@
 import bluetooth
-import verificar_llave
 
-def recibir_mensajes():
-    server_sock=bluetooth.BluetoothSocket( bluetooth.RFCOMM )
+server_socket=bluetooth.BluetoothSocket( bluetooth.RFCOMM )
 
-    port = 1
-    server_sock.bind(("",port))
-    server_sock.listen(1)
+port = 1
+server_socket.bind(("",port))
+server_socket.listen(1)
 
-    client_sock,address = server_sock.accept()
-    print("CONEXION ACEPTADA")
+client_socket,address = server_socket.accept()
 
-    llave = client_sock.recv(1024)
-    ## MANEJANDO LLAVE RECIBIDA
-    if verificar_llave_localmente(llave):
-        ##ABRIR DISPOSITIVO
-        print("LLAVE VALIDA")
-    elif verificar_llave_en_servidor(llave):
-        ##ABRIR DISPOSITIVO
-        print("LLAVE VALIDA")
-    else:
-        ##ABRIR DISPOSITIVO
-        print("LLAVE INVALIDA")
-        
+while 1:
+    data = client_socket.recv(1024)
+    codigo = str(data)
+    print("CODIGO: " + codigo)
 
+    if (data == "q"):
+        print("Quit")
+        break
 
-    client_sock.close()
-    server_sock.close()
+client_socket.close()
+server_socket.close()
+
