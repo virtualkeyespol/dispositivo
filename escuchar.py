@@ -12,7 +12,7 @@ client_socket,address = server_socket.accept()
 while 1:
     data = client_socket.recv(1024)
     codigo = str(data)
-    print("CODIGO: " + codigo)
+    print("CODIGO: " + codigo, verificar_llave(codigo))
 
     if (data == "q"):
         print("Quit")
@@ -25,9 +25,12 @@ server_socket.close()
 def verificar_llave(codigo):
     f=open("files/numero_serie.txt", "r")
     string = str(f.read())
+    f.close()
     llaves = json.loads(string)
-    
     respuesta = llaves.get(codigo, None)
+
+    print("RESPUESTA ", respuesta)
+    
     if respuesta == None:
         return False
     else:
