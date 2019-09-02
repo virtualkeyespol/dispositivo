@@ -16,7 +16,7 @@ while True:
 	try:
 		##	LEER NUMERO DE SERIE DEL DISPOSITIVO
 		f=open("files/numero_serie.txt", "r")
-		NUMERO_SERIE = int(f.read())
+		NUMERO_SERIE = str(f.read())
 		f.close()
 
 		## REALIZAR REQUEST
