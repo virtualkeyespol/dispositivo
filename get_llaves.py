@@ -31,6 +31,7 @@ while True:
 				llaves = {}
 				f=open("llaves.txt", "w+")
 				respuesta = json.loads(r.text)
+				print(respuesta)
 				for llave in respuesta["RESPUESTA"]:
 					llaves[llave["codigo"]] =  {
 						"fecha_expiracion" : llave["fecha_expiracion"],
