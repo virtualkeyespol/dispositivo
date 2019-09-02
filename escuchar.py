@@ -1,4 +1,5 @@
 import bluetooth
+import json
 
 server_socket=bluetooth.BluetoothSocket( bluetooth.RFCOMM )
 
@@ -20,3 +21,14 @@ while 1:
 client_socket.close()
 server_socket.close()
 
+
+def verificar_llave(codigo):
+    f=open("files/numero_serie.txt", "r")
+    string = str(f.read())
+    llaves = json.loads(string)
+    
+    respuesta = llaves.get(codigo, None)
+    if respuesta == None:
+        return False
+    else:
+        return True
