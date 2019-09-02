@@ -41,7 +41,7 @@ client_socket,address = server_socket.accept()
 
 while 1:
     data = client_socket.recv(1024)
-    codigo = str(data)
+    codigo = data.decode("utf-8")
     print("CODIGO: " + codigo, verificar_llave(codigo))
 
     if (data == "q"):
