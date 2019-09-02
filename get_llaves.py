@@ -29,7 +29,7 @@ while True:
 			if respuesta["STATUS"] == "OK":
 				##	GUARDANDO LLAVES
 				llaves = {}
-				f=open("llaves.txt", "w+")
+				f=open("files/llaves.txt", "w+")
 				respuesta = json.loads(r.text)
 				print(respuesta)
 				for llave in respuesta["RESPUESTA"]:
@@ -37,6 +37,7 @@ while True:
 						"fecha_expiracion" : llave["fecha_expiracion"],
 						"fecha_inicio" : llave["fecha_inicio"]
 					}
+				
 				f.write(json.dumps(llaves))
 				f.close()
 
