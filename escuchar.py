@@ -1,5 +1,8 @@
 import bluetooth
 import json
+import requests
+import json
+import os
 
 ##  LEER IP DEL SERVIDOR
 files_path = os.getcwd() + '/files'
