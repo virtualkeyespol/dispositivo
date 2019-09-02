@@ -1,19 +1,22 @@
 import bluetooth
 import json
 
-def verificar_llave(codigo):
-    f=open("files/numero_serie.txt", "r")
-    string = str(f.read())
-    f.close()
-    llaves = json.loads(string)
-    respuesta = llaves.get(codigo, None)
+url = ip + '/rest/llave/verificar_llave'
 
-    print("RESPUESTA ", respuesta)
-    
-    if respuesta == None:
-        return False
+def verificar_llave(codigo):
+    ## REALIZAR REQUEST
+    parametros = {"CODIGO" : codigo}
+    r = requests.get(url, params=parametros)
+    if r.status_code == 200:
+        ## VERIFICANDO RESPUESTA DEL SERVIDOR
+        respuesta = json.loads(r.text)
+        if respuesta["STATUS"] == "OK":
+            LED.abierto()
+        else:
+            LED.status()
     else:
-        return True
+        ## MANEJO DE ERROR DE REQUEST
+        print("ERROR DE REQUEST")
 
 
 server_socket=bluetooth.BluetoothSocket( bluetooth.RFCOMM )
