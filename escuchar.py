@@ -4,6 +4,8 @@ import requests
 import json
 import os
 
+import led as LED
+
 ##  LEER IP DEL SERVIDOR
 files_path = os.getcwd() + '/files'
 f=open(files_path + "/ip_config.txt", "r")
@@ -19,8 +21,10 @@ def verificar_llave(codigo):
         ## VERIFICANDO RESPUESTA DEL SERVIDOR
         respuesta = json.loads(r.text)
         if respuesta["STATUS"] == "OK":
+            print("EXITO")
             LED.abierto()
         else:
+            print("FALLO")
             LED.status()
     else:
         ## MANEJO DE ERROR DE REQUEST
